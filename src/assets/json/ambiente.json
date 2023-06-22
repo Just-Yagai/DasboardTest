@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nombre": "Produccion"
+  },
+  {
+    "id": 2,
+    "nombre": "PreCertificacion"
+  },
+  {
+    "id": 3,
+    "nombre": "Certificacion"
+  }
+]

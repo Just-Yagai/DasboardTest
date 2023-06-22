@@ -1,1 +1,44 @@
-<p>select works!</p>
+<!-- Select Option per Table -->
+<div class="container">
+    <div class="row">
+        <!-- Select Ambiente -->
+        <div class="col-auto">
+            <label class="col-form-label">Ambiente:</label>
+        </div>
+        <div class="col-lg">
+            <select class="form-select" [disabled]="SelectDisabled" (change)="onAmbienteChange($any($event.target).value)">
+                <option *ngFor="let items of datosAmbientes" [value]="items.id">{{ items.nombre }}</option>                  
+            </select>
+        </div>
+        <!-- Select Canal -->
+        <div class="col-auto">
+           <label class="col-form-label">Canal:</label> 
+        </div>
+        <div class="col-lg">
+            <select class="form-select" [disabled]="SelectDisabled" (change)="onCanalChange($any($event.target).value)">
+                <option *ngFor="let items of datosCanal" [value]="items.id">{{ items.nombre }}</option>
+            </select>
+        </div>
+        <!-- Select Tipo E-CF -->
+        <div *ngIf="e_CF === true" class="col-auto">
+            <label class="col-form-label">Tipo e-CF:</label>
+        </div>
+        <div *ngIf="e_CF === true" class="col-lg">
+            <select class="form-select" [disabled]="SelectDisabled">
+                <option selected>Seleccionar...</option>
+                <option value="(31)">Factura de Crédito Fiscal Electrónica (31)</option>
+                <option value="(32)">Factura de Consumo Electrónica (32)</option>
+                <option value="(33)">Nota de Débito Electrónica (33)</option>
+                <option value="(34)">Nota de Débito Electrónica (34)</option>
+                <option value="(41)">Compras Electrónico (41)</option>
+                <option value="(43)">Gastos Menores Electrónico (43)</option>
+                <option value="(44)">Regímenes Especiales Electrónico (44)</option>
+                <option value="(45)">Gubernamental Electrónico (45)</option>
+                <option value="(46)">Comprobante de Exportaciones Electrónico (46)</option>
+                <option value="(47)">Comprobante para Pagos al Exterior Electrónico (47)</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+

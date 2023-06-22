@@ -13,12 +13,13 @@
                         <div class="col-auto">
                             <input type="text"
                                    class="form-control"
-                                   [(ngModel)]="rnc">
+                                   [(ngModel)]="rnc"
+                                   (keyup)="clearData()">
                         </div>
                         <div class="col col-form-label">
                             <button type="submit"
                                     class="btn btn-success btn-sm"
-                                    (click)="obtenerRNC2(rnc)">Buscar</button>
+                                    (click)="obtenerRNC(rnc)">Buscar</button>
                         </div>
                     </div>
                     <!-- Razon Social -->
@@ -143,8 +144,8 @@
                 id="marcas-tab-pane" role="tabpanel" 
                 aria-labelledby="marcas-tab" 
                 tabindex="0">
-                <app-select></app-select>
-                <app-marcas></app-marcas>
+                <app-select [SelectDisabled]="isSelectDisabled"></app-select>
+                <app-marcas [MarcasDatos]="modeloDatos.Marcas"></app-marcas>
             </div>
             <!-- Delegaciones -->
             <div class="tab-pane fade" 
@@ -152,7 +153,7 @@
                 role="tabpanel" 
                 aria-labelledby="delegaciones-tab" 
                 tabindex="0">
-                <app-select></app-select>
+                <app-select [SelectDisabled]="isSelectDisabled"></app-select>
                 <app-delegaciones></app-delegaciones>
             </div>
             <!-- Secuencias -->
@@ -161,7 +162,7 @@
                 role="tabpanel" 
                 aria-labelledby="secuencias-tab" 
                 tabindex="0">
-                <app-select></app-select> 
+                <app-select [SelectDisabled]="isSelectDisabled"></app-select> 
                 <app-secuencias></app-secuencias>
             </div>
             <!-- Rnc Estado -->
@@ -170,7 +171,7 @@
                 role="tabpanel" 
                 aria-labelledby="rncEstado-tab" 
                 tabindex="0">
-                <app-select></app-select>
+                <app-select [SelectDisabled]="isSelectDisabled"></app-select>
                 <app-rnc-estado></app-rnc-estado>
             </div>
             <!-- End -->

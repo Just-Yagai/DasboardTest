@@ -1,1 +1,27 @@
-<p>marcas works!</p>
+<!-- Tabla Marcas -->
+<div class="table-responsive">
+    <table class="table table-bordered mt-3 mb-auto text-center align-middle">
+        <thead class="table-light">
+            <tr>
+                <th class="lopendeopdrachten text-center" colspan="4">Marcas Disponibles</th>
+            </tr>
+            <tr>
+                <th>Tipo Marca</th>
+                <th>Estado</th>
+                <th>Fecha Inicio Operación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let items of MarcasDatos">
+                <td>{{ items.tipo }}</td>
+                <td [ngStyle]="{ 'color': items.estado === 'Disponible' ? 'green' : 'red' }">{{ items.estado }}</td>
+                <td>{{ items.fecha_inicio_operacion }}</td>
+                <td>
+                    <img *ngIf="items.estado === 'Disponible'" (click)="cambiarEstado(items)" width="30" height="30" src="assets/img/error.svg">
+                    <img *ngIf="items.estado === 'No disponible'" (click)="cambiarEstado(items)" width="30" height="30" src="assets/img/correct.svg">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

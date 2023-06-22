@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // Servicios
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { MarcasService } from 'src/app/services/marcas.service';
@@ -9,6 +9,10 @@ import { AlertsService } from '../utils/alerts.service';
 
 import { Dashboard } from 'src/app/core';
 import { TipoCertificacion } from 'src/app/core/model/dashboard';
+import { ModalGeneral } from 'src/app/core/model';
+
+// ViewChild
+import { SelectComponent } from '../../components/select/select.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,15 +21,26 @@ import { TipoCertificacion } from 'src/app/core/model/dashboard';
 })
 export class DashboardComponent implements OnInit {
 
+  @ViewChild(SelectComponent) selectComponent: SelectComponent;
+
+  // Modelo General
+  modeloDatos: ModalGeneral = new ModalGeneral();
+
+  // Datos Generales Del Contribuyente
   datos: Dashboard | undefined;
   tipoCertificacion: TipoCertificacion[];
 
   rnc: string;
   razonSocial: string;
+  // ambienteID: number;
+  // canalID: number;
 
   selectedTipoCertificacion: string | null;
   isSelectDisabled: boolean = true;
   datosTipo: any = [];
+
+  // Datos: Marcas
+  // datosMarcas: ModalGeneral;
 
   constructor(
     private DashboardServices: DashboardService,
@@ -37,18 +52,11 @@ export class DashboardComponent implements OnInit {
   ){}
 
   ngOnInit(){
-    // this.obtenerRNC('002');
+    // this.obtenerMarcas(this.rnc,1,1);
   }
 
-  obtenerRNC(rnc: string){
-    this.DashboardServices.getRNC(rnc)
-        .subscribe((data) => {
-          this.datos = data;
-          console.log(data);
-        })
-  }
-
-  obtenerRNC2(rnc: string){
+  // Obtener RNC
+  obtenerRNC(rnc: string) {
     if (!rnc) {
       this.AlertServices.rncNoIntroducido();
       return;
@@ -59,8 +67,12 @@ export class DashboardComponent implements OnInit {
           if (data) {
             this.updateDatarncValidos(data);
             this.AlertServices.rncValido();
+            this.obtenerMarcas(this.rnc, 1, 1);
+            this.selectComponent.obtenerAmbiente();
+            this.selectComponent.obtenerCanal();
           } else {
             this.AlertServices.rncInvalido();
+            this.updateDataRncInvalidos();
           }
         });
   }
@@ -80,9 +92,43 @@ export class DashboardComponent implements OnInit {
     this.datosTipo.finalizacion_postulacion = tipoSeleccionado ? tipoSeleccionado.finalizacion_postulacion : '';
   }
 
+  updateDataRncInvalidos() {
+    this.rnc = '';
+    this.razonSocial = '';
+    this.tipoCertificacion = [];
+    this.datosTipo = [];
+    this.isSelectDisabled = true;
+    this.modeloDatos.Marcas = [];
+    this.selectComponent.datosAmbientes = [];
+    this.selectComponent.datosCanal = [];
+  }
+
+  clearData() {
+    if (!this.rnc) {
+      this.razonSocial = '';
+      this.tipoCertificacion = [];
+      this.selectedTipoCertificacion = null;
+      this.isSelectDisabled = true;
+      this.datosTipo = [];
+      this.modeloDatos.Marcas = [];
+      this.selectComponent.datosAmbientes = [];
+      this.selectComponent.datosCanal = [];
+    }
+  }
+
   getDatosTipoCertificacion() {
     this.datosTipo = this.tipoCertificacion.find(
     (tipoCert: { tipo: string | null}) => tipoCert.tipo === this.selectedTipoCertificacion
     );
+  }
+
+  // Obtener Marcas
+  obtenerMarcas(rnc: string, ambienteID: number, canalID: number) {
+    this.MarcasServices.getMarcas(rnc, ambienteID, canalID)
+        .subscribe((data) => {
+          this.modeloDatos.Marcas = data;
+          // this.datosMarcas = this.modeloDatos;
+          console.log(data);
+        })
   }
 }
