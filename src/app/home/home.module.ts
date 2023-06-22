@@ -10,7 +10,6 @@ import { SecuenciasComponent } from './components/secuencias/secuencias.componen
 import { RncEstadoComponent } from './components/rnc-estado/rnc-estado.component';
 import { SelectComponent } from './components/select/select.component';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,

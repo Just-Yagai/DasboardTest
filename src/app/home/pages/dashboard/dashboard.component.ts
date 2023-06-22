@@ -7,7 +7,7 @@ import { SecuenciasService } from 'src/app/services/secuencias.service';
 import { RncEstadoService } from 'src/app/services/rnc-estado.service';
 import { AlertsService } from '../utils/alerts.service';
 
-import { Dashboard } from 'src/app/core';
+import { Dashboard, Marcas, ModelFilter } from 'src/app/core';
 import { TipoCertificacion } from 'src/app/core/model/dashboard';
 import { ModalGeneral } from 'src/app/core/model';
 

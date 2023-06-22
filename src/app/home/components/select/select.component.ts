@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModelFilter } from 'src/app/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { SelectService } from 'src/app/services/select.service';
 
 @Component({
@@ -17,7 +16,7 @@ export class SelectComponent implements OnInit {
 
   datosAmbientes: any[];
   datosCanal: any[];
-
+  
   constructor(private SelectServices: SelectService) {}
 
   ngOnInit() {
@@ -40,7 +39,7 @@ export class SelectComponent implements OnInit {
   }
 
   onAmbienteChange(value: string) {
-    this.ambienteID = parseInt(value);
+    this.ambienteID = parseInt(value); 
     // this.filterMarcas();
   }
   
@@ -48,5 +47,4 @@ export class SelectComponent implements OnInit {
     this.canalID = parseInt(value);
     // this.filterMarcas();
   }
-
 }
