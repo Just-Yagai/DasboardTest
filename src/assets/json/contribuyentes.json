@@ -1,0 +1,44 @@
+[
+  {
+    "rnc": "001",
+    "razonSocial": "Actividades económicas del contribuyente",
+    "tipo_certificacion": [
+      {
+        "tipo": "Emisor",
+        "estado": "Registrado",
+        "inicio_postulacion": "10/07/2023",
+        "finalizacion_postulacion": "11/10/2023"
+      },
+      {
+        "tipo": "Proveedor",
+        "estado": "Registrado",
+        "inicio_postulacion": "16/07/2023",
+        "finalizacion_postulacion": "25/12/2023"
+      }
+    ]
+  },
+  {
+    "rnc": "002",
+    "razonSocial": "Actividades económicas del contribuyente nose",
+    "tipo_certificacion": [
+      {
+        "tipo": "Emisor",
+        "estado": "Registrado",
+        "inicio_postulacion": "05/07/2023",
+        "finalizacion_postulacion": "30/10/2023"
+      }
+    ]
+  },
+  {
+    "rnc": "003",
+    "razonSocial": "Actividades",
+    "tipo_certificacion": [
+      {
+        "tipo": "Proveedor",
+        "estado": "No registrado",
+        "inicio_postulacion": "N/A",
+        "finalizacion_postulacion": "N/A"
+      }
+    ]
+  }
+]

@@ -1,0 +1,179 @@
+<div class="container overflow-hidden">
+    <div class="row gx-5">
+        <!-- First Card -->
+        <div class="col d-inline p-3">
+            <div class="card">
+                <h5 class="card-header">Datos de Contribuyente</h5>
+                <div class="card-body d-inline">
+                    <div class="row g-3 align-items-center">
+                        <!-- Datos de Contribuyente -->
+                        <div class="col-auto">
+                            <label class="col-form-label">rnc:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text"
+                                   class="form-control"
+                                   [(ngModel)]="rnc">
+                        </div>
+                        <div class="col col-form-label">
+                            <button type="submit"
+                                    class="btn btn-success btn-sm"
+                                    (click)="obtenerRNC2(rnc)">Buscar</button>
+                        </div>
+                    </div>
+                    <!-- Razon Social -->
+                    <label class="col-form-label">razon social:</label>
+                    <textarea class="form-control mb-2" rows="3" disabled [(ngModel)]="razonSocial"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- end -->
+
+        <!-- Second Card -->
+        <div class="col p-3">
+            <div class="card">
+                <h5 class="card-header">Datos de Certificacion</h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row justify-content-between g-2">
+
+                            <!-- Tipo Certificacion -->
+                            <div class="col-lg-auto">
+                                <label class="col-form-label">Tipo certificacion:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-select" 
+                                        [(ngModel)]="selectedTipoCertificacion" 
+                                        [disabled]="isSelectDisabled" 
+                                        (change)="getDatosTipoCertificacion()">
+                                    <option disabled selected>Seleccionar tipo...</option>
+                                    <option *ngFor="let tipoCert of tipoCertificacion" [value]="tipoCert.tipo">{{ tipoCert.tipo }}</option>
+                                </select>
+                            </div>
+
+                            <!-- Estado -->
+                            <div class="col-lg-3">
+                                <label class="col-form-label">Estado:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled [(ngModel)]="datosTipo.estado">
+                            </div>
+
+                            <!-- Inicio Postulacion -->
+                            <div class="col-lg-auto">
+                                <label class="col-form-label">Inicio Postulacion:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled [(ngModel)]="datosTipo.inicio_postulacion">
+                            </div>
+
+                            <!-- Finalizacion Postulacion -->
+                            <div class="col-lg-auto">
+                                <label class="col-form-label">Finalizacion Postulacion:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled [(ngModel)]="datosTipo.finalizacion_postulacion">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabs Navegation -->
+<div class="container overflow-hidden">
+    <div class="card row gx-3 mb-2">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <!-- Marcas Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link active" 
+                            id="marcas" 
+                            data-bs-toggle="tab" 
+                            data-bs-target="#marcas-tab-pane"
+                            type="button" 
+                            role="tab" 
+                            aria-controls="marcas-tab-pane" 
+                            arial-selected="true">Marcas
+                    </button>
+                </li>
+                <!-- Delegaciones Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link" 
+                            id="delegaciones" 
+                            data-bs-toggle="tab"
+                            data-bs-target="#delegaciones-tab-pane" 
+                            type="button" 
+                            role="tab"
+                            aria-controls="delegaciones-tab-pane" 
+                            arial-selected="true">Delegaciones
+                    </button>
+                </li>
+                <!-- Secuencias Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link" 
+                            id="secuencias" 
+                            data-bs-toggle="tab" 
+                            data-bs-target="#secuencias-tab-pane"
+                            type="button" 
+                            role="tab" 
+                            aria-controls="secuencias-tab-pane"
+                            arial-selected="true">Secuencias
+                    </button>
+                </li>
+                <!-- rncEstado Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link" 
+                            id="rncEstado" 
+                            data-bs-toggle="tab"
+                            data-bs-target="#rncEstado-tab-pane" 
+                            type="button" 
+                            role="tab"
+                            aria-controls="rncEstado-tab-pane" 
+                            arial-selected="true">Rnc Estado
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body tab-content" id="myTabContent">
+            <!-- Marcas -->
+            <div class="tab-pane fade show active" 
+                id="marcas-tab-pane" role="tabpanel" 
+                aria-labelledby="marcas-tab" 
+                tabindex="0">
+                <app-select></app-select>
+                <app-marcas></app-marcas>
+            </div>
+            <!-- Delegaciones -->
+            <div class="tab-pane fade" 
+                id="delegaciones-tab-pane" 
+                role="tabpanel" 
+                aria-labelledby="delegaciones-tab" 
+                tabindex="0">
+                <app-select></app-select>
+                <app-delegaciones></app-delegaciones>
+            </div>
+            <!-- Secuencias -->
+            <div class="tab-pane fade" 
+                id="secuencias-tab-pane" 
+                role="tabpanel" 
+                aria-labelledby="secuencias-tab" 
+                tabindex="0">
+                <app-select></app-select> 
+                <app-secuencias></app-secuencias>
+            </div>
+            <!-- Rnc Estado -->
+            <div class="tab-pane fade" 
+                id="rncEstado-tab-pane" 
+                role="tabpanel" 
+                aria-labelledby="rncEstado-tab" 
+                tabindex="0">
+                <app-select></app-select>
+                <app-rnc-estado></app-rnc-estado>
+            </div>
+            <!-- End -->
+        </div>
+    </div>
+</div>
