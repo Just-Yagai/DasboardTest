@@ -144,7 +144,8 @@
                 id="marcas-tab-pane" role="tabpanel" 
                 aria-labelledby="marcas-tab" 
                 tabindex="0">
-                <app-select [SelectDisabled]="isSelectDisabled"></app-select>
+                <app-select [SelectDisabled]="isSelectDisabled"
+                            (dataFilterMarcas)="updateDataMarcas($event)"></app-select>
                 <app-marcas [MarcasDatos]="modeloDatos.Marcas"></app-marcas>
             </div>
             <!-- Delegaciones -->

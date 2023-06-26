@@ -27,20 +27,20 @@ export class DashboardComponent implements OnInit {
   modeloDatos: ModalGeneral = new ModalGeneral();
 
   // Datos Generales Del Contribuyente
-  datos: Dashboard | undefined;
-  tipoCertificacion: TipoCertificacion[];
-
   rnc: string;
   razonSocial: string;
-  // ambienteID: number;
-  // canalID: number;
+  
+  tipoCertificacion: TipoCertificacion[];
+  isSelectDisabled: boolean = true;
+
+  // ambienteID: 1;
+  // canalID: 1;
 
   selectedTipoCertificacion: string | null;
-  isSelectDisabled: boolean = true;
   datosTipo: any = [];
 
-  // Datos: Marcas
-  // datosMarcas: ModalGeneral;
+  // Datos: Marcas, Delegaciones, Secuencias, RNC Estado
+  datosMarcas: Marcas[];
 
   constructor(
     private DashboardServices: DashboardService,
@@ -65,9 +65,10 @@ export class DashboardComponent implements OnInit {
     this.DashboardServices.getRNC(rnc)
         .subscribe((data) => {
           if (data) {
-            this.updateDatarncValidos(data);
+            this.updateDataRncValidos(data);
             this.AlertServices.rncValido();
             this.obtenerMarcas(this.rnc, 1, 1);
+            this.selectComponent.obtenerMarcasFilter(this.rnc)
             this.selectComponent.obtenerAmbiente();
             this.selectComponent.obtenerCanal();
           } else {
@@ -77,7 +78,7 @@ export class DashboardComponent implements OnInit {
         });
   }
 
-  updateDatarncValidos(data: Dashboard) {
+  updateDataRncValidos(data: Dashboard) {
     this.razonSocial = data.razonSocial;
     this.tipoCertificacion = data.tipo_certificacion;
     this.isSelectDisabled = false;
@@ -122,12 +123,15 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  updateDataMarcas(datos: Marcas[]) {
+    this.modeloDatos.Marcas = datos;
+  }
+
   // Obtener Marcas
   obtenerMarcas(rnc: string, ambienteID: number, canalID: number) {
     this.MarcasServices.getMarcas(rnc, ambienteID, canalID)
         .subscribe((data) => {
           this.modeloDatos.Marcas = data;
-          // this.datosMarcas = this.modeloDatos;
           console.log(data);
         })
   }

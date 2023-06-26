@@ -9,7 +9,7 @@ import { MarcasService } from 'src/app/services/marcas.service';
 })
 export class MarcasComponent implements OnInit {
   
-  @Input() MarcasDatos: Marcas[];
+  @Input() MarcasDatos: any[];
 
   constructor(private MarceServices: MarcasService) {}
 
@@ -27,5 +27,4 @@ export class MarcasComponent implements OnInit {
         console.log(resp);
       });
   }
-
 }
