@@ -3,6 +3,6 @@ export class Marcas {
     public tipo: string;
     public estado: string;
     public fecha_inicio_operacion: string;
-    public ambienteID: number;
-    public canalID: number;
+    public AmbienteID: number;
+    public CanalID: number;
 }

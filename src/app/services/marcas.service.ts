@@ -17,23 +17,13 @@ export class MarcasService {
       .pipe(
         map(data => data.filter(data => 
             data.rnc === rnc &&
-            data.ambienteID === ambienteID &&
-            data.canalID === canalID
+            data.AmbienteID === ambienteID &&
+            data.CanalID === canalID
           ))
       );
   }
   
   updateMarca(marca: any): Observable<any> {
     return this.http.put('assets/json/marcas.json', marca);
-  }
-
-  // Filtrado / Select
-  getMarcasFilter(rnc: string): Observable<Marcas[]> {
-    return this.http.get<Marcas[]>('assets/json/marcas.json')
-    .pipe(
-      map(data => data.filter(data =>
-          data.rnc === rnc
-          ))
-    )
   }
 }

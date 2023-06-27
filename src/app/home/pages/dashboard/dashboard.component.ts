@@ -7,9 +7,9 @@ import { SecuenciasService } from 'src/app/services/secuencias.service';
 import { RncEstadoService } from 'src/app/services/rnc-estado.service';
 import { AlertsService } from '../utils/alerts.service';
 
-import { Dashboard, Marcas, ModelFilter } from 'src/app/core';
-import { TipoCertificacion } from 'src/app/core/model/dashboard';
-import { ModalGeneral } from 'src/app/core/model';
+import { Dashboard, Marcas, ModeloFilter } from 'src/app/core';
+import { TipoCertificacion } from 'src/app/core/model/utils/dashboard';
+import { ModeloGeneral } from 'src/app/core/model/general';
 
 // ViewChild
 import { SelectComponent } from '../../components/select/select.component';
@@ -23,8 +23,11 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(SelectComponent) selectComponent: SelectComponent;
 
-  // Modelo General
-  modeloDatos: ModalGeneral = new ModalGeneral();
+  // Modelo de Datos
+  modeloDatos: ModeloGeneral = new ModeloGeneral();
+
+  // Modelo de Filtrado
+  modeloFiltrado: ModeloFilter = new ModeloFilter('',0,'',0,0);
 
   // Datos Generales Del Contribuyente
   rnc: string;
@@ -32,9 +35,6 @@ export class DashboardComponent implements OnInit {
   
   tipoCertificacion: TipoCertificacion[];
   isSelectDisabled: boolean = true;
-
-  // ambienteID: 1;
-  // canalID: 1;
 
   selectedTipoCertificacion: string | null;
   datosTipo: any = [];
@@ -51,9 +51,7 @@ export class DashboardComponent implements OnInit {
     private AlertServices: AlertsService
   ){}
 
-  ngOnInit(){
-    // this.obtenerMarcas(this.rnc,1,1);
-  }
+  ngOnInit(){}
 
   // Obtener RNC
   obtenerRNC(rnc: string) {
@@ -67,10 +65,10 @@ export class DashboardComponent implements OnInit {
           if (data) {
             this.updateDataRncValidos(data);
             this.AlertServices.rncValido();
-            this.obtenerMarcas(this.rnc, 1, 1);
-            this.selectComponent.obtenerMarcasFilter(this.rnc)
-            this.selectComponent.obtenerAmbiente();
-            this.selectComponent.obtenerCanal();
+            this.modeloFiltrado.rnc = this.rnc;
+            this.modeloFiltrado.ambienteID = 1;
+            this.modeloFiltrado.canalID = 1;
+            this.obtenerMarcas(this.modeloFiltrado);
           } else {
             this.AlertServices.rncInvalido();
             this.updateDataRncInvalidos();
@@ -100,8 +98,10 @@ export class DashboardComponent implements OnInit {
     this.datosTipo = [];
     this.isSelectDisabled = true;
     this.modeloDatos.Marcas = [];
-    this.selectComponent.datosAmbientes = [];
-    this.selectComponent.datosCanal = [];
+    this.modeloFiltrado.ambienteID = 1;
+    this.modeloFiltrado.canalID = 1;
+    // this.selectComponent.datosAmbientes = [];
+    // this.selectComponent.datosCanal = [];
   }
 
   clearData() {
@@ -112,8 +112,10 @@ export class DashboardComponent implements OnInit {
       this.isSelectDisabled = true;
       this.datosTipo = [];
       this.modeloDatos.Marcas = [];
-      this.selectComponent.datosAmbientes = [];
-      this.selectComponent.datosCanal = [];
+      this.modeloFiltrado.ambienteID = 1;
+      this.modeloFiltrado.canalID = 1;
+      // this.selectComponent.datosAmbientes = [];
+      // this.selectComponent.datosCanal = [];
     }
   }
 
@@ -123,13 +125,9 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  updateDataMarcas(datos: Marcas[]) {
-    this.modeloDatos.Marcas = datos;
-  }
-
   // Obtener Marcas
-  obtenerMarcas(rnc: string, ambienteID: number, canalID: number) {
-    this.MarcasServices.getMarcas(rnc, ambienteID, canalID)
+  obtenerMarcas(modeloFiltrado: ModeloFilter) {
+    this.MarcasServices.getMarcas(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
         .subscribe((data) => {
           this.modeloDatos.Marcas = data;
           console.log(data);

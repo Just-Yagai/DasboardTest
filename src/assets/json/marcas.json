@@ -4,87 +4,87 @@
     "tipo": "Facturador Electrónico",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/05/12",
-    "ambienteID": 1,
-    "canalID": 1
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
     "rnc": "001",
     "tipo": "dxfdfssfd Electrónico",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/05/12",
-    "ambienteID": 1,
-    "canalID": 1
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
     "rnc": "001",
     "tipo": "Facturador Gratuito55223",
     "estado": "No disponible",
     "fecha_inicio_operacion": "2023/05/14",
-    "ambienteID": 3,
-    "canalID": 1
+    "AmbienteID": 3,
+    "CanalID": 1
   },
   {
     "rnc": "001",
     "tipo": "Facturador Gratuito",
     "estado": "No disponible",
     "fecha_inicio_operacion": "2023/05/14",
-    "ambienteID": 3,
-    "canalID": 2
+    "AmbienteID": 3,
+    "CanalID": 2
   },
   {
     "rnc": "001",
     "tipo": "Lorem ipsum dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/12/14",
-    "ambienteID": 2,
-    "canalID": 1
+    "AmbienteID": 2,
+    "CanalID": 1
   },
   {
     "rnc": "001",
     "tipo": "1234ipsum dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/12/14",
-    "ambienteID": 2,
-    "canalID": 2
+    "AmbienteID": 2,
+    "CanalID": 2
   },
   {
     "rnc": "001",
     "tipo": "Lorem ipsum dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/09/25",
-    "ambienteID": 2,
-    "canalID": 1
+    "AmbienteID": 2,
+    "CanalID": 1
   },
   {
     "rnc": "002",
     "tipo": "Facturador",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/05/12",
-    "ambienteID": 1,
-    "canalID": 1
+    "AmbienteID": 1,
+    "CanalID": 1
   },
   {
     "rnc": "002",
     "tipo": "Gratuito",
     "estado": "No disponible",
     "fecha_inicio_operacion": "2023/05/14",
-    "ambienteID": 3,
-    "canalID": 1
+    "AmbienteID": 3,
+    "CanalID": 1
   },
   {
     "rnc": "003",
     "tipo": "Lorem ipsum",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/12/14",
-    "ambienteID": 3,
-    "canalID": 2
+    "AmbienteID": 3,
+    "CanalID": 2
   },
   {
     "rnc": "003",
     "tipo": "dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/09/25",
-    "ambienteID": 3,
-    "canalID": 2
+    "AmbienteID": 3,
+    "CanalID": 2
   }
 ]

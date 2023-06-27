@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Marcas } from 'src/app/core';
-import { ModalGeneral } from 'src/app/core/model';
-import { MarcasService } from 'src/app/services/marcas.service';
+import { Marcas, ModeloFilter } from 'src/app/core';
+import { ModeloGeneral } from 'src/app/core/model/general';
 import { SelectService } from 'src/app/services/select.service';
 
 @Component({
@@ -12,38 +11,38 @@ import { SelectService } from 'src/app/services/select.service';
 export class SelectComponent implements OnInit {
 
   // Modelo General
-  modeloDatos: ModalGeneral = new ModalGeneral();
+  modeloDatos: ModeloGeneral = new ModeloGeneral();
 
   // Input y Output
   @Input() e_CF: boolean;
   @Input() SelectDisabled: boolean;
-  @Output() dataFilterMarcas = new EventEmitter<Marcas[]>();
+  @Input() FiltradoGeneral: ModeloFilter;
+  @Output() DatosFiltrados = new EventEmitter<ModeloFilter>();
 
   // Datos Generales
   ambienteID: number;
   canalID: number;
 
+  // Datos: Ambiente y Canal
   datosAmbientes: any[];
   datosCanal: any[];
-
-  // Datos para filtrar
-  datosMarcasFilter: Marcas[] = [];
   
-  constructor(
-    private SelectServices: SelectService,
-    private MarcasServices: MarcasService) {}
+  constructor( private SelectServices: SelectService ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.obtenerAmbiente();
+    this.obtenerCanal();
+  }
 
   obtenerAmbiente(){
-    this.SelectServices.getAmbiente(this.ambienteID, this.canalID)
+    this.SelectServices.getAmbiente()
         .subscribe((data) => {
           this.datosAmbientes = data;
         });
   }
 
   obtenerCanal(){
-    this.SelectServices.getCanal(this.ambienteID, this.canalID)
+    this.SelectServices.getCanal()
         .subscribe((data) => {
           this.datosCanal = data;
         });
@@ -51,36 +50,13 @@ export class SelectComponent implements OnInit {
 
   onAmbienteChange(value: string) {
     this.ambienteID = parseInt(value); 
-    this.filterMarcas();
+    this.FiltradoGeneral.ambienteID = this.ambienteID;
+    this.DatosFiltrados.emit(this.FiltradoGeneral);
   }
   
   onCanalChange(value: string) {
     this.canalID = parseInt(value);
-    this.filterMarcas();
-  }
-
-  // Obtener Marcas para filtrado
-  obtenerMarcasFilter(rnc: string) {
-    this.MarcasServices.getMarcasFilter(rnc)
-        .subscribe((data) => {
-          this.datosMarcasFilter = data;
-        })
-  }
-
-  filterMarcas() {
-    let filtradoByMarcas: Marcas[] = [];
-    
-    if (this.ambienteID && this.canalID) {
-      filtradoByMarcas = this.datosMarcasFilter.filter((marca: { ambienteID: number; canalID: number; }) => 
-        marca.ambienteID === this.ambienteID &&
-        marca.canalID === this.canalID
-      );
-    } else if (this.ambienteID) {
-      filtradoByMarcas = this.datosMarcasFilter.filter((marca: { ambienteID: number; }) => marca.ambienteID === this.ambienteID);
-    } else if (this.canalID) {
-      filtradoByMarcas = this.datosMarcasFilter.filter((marca: { canalID: number; }) => marca.canalID === this.canalID);
-    }
-    this.dataFilterMarcas.emit(filtradoByMarcas);
-    console.log(filtradoByMarcas);
+    this.FiltradoGeneral.canalID = this.canalID;
+    this.DatosFiltrados.emit(this.FiltradoGeneral);
   }
 }
