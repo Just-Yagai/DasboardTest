@@ -156,8 +156,11 @@
                 role="tabpanel" 
                 aria-labelledby="delegaciones-tab" 
                 tabindex="0">
-                <app-select [SelectDisabled]="isSelectDisabled"></app-select>
-                <app-delegaciones></app-delegaciones>
+                <app-select [SelectDisabled]="isSelectDisabled"
+                            [FiltradoGeneral]="modeloFiltrado"
+                            (DatosFiltrados)="obtenerDelegaciones($event)">
+                </app-select>
+                <app-delegaciones [DelegacionesDatos]="modeloDatos.Delegaciones"></app-delegaciones>
             </div>
             <!-- Secuencias -->
             <div class="tab-pane fade" 
@@ -165,8 +168,12 @@
                 role="tabpanel" 
                 aria-labelledby="secuencias-tab" 
                 tabindex="0">
-                <app-select [SelectDisabled]="isSelectDisabled"></app-select> 
-                <app-secuencias></app-secuencias>
+                <app-select [SelectDisabled]="isSelectDisabled"
+                            [FiltradoGeneral]="modeloFiltrado"
+                            [e_CF]="true"
+                            (DatosFiltrados)="obtenerSecuencias($event)">
+                </app-select> 
+                <app-secuencias [SecuenciasDatos]="modeloDatos.Secuencias"></app-secuencias>
             </div>
             <!-- Rnc Estado -->
             <div class="tab-pane fade" 
@@ -174,8 +181,11 @@
                 role="tabpanel" 
                 aria-labelledby="rncEstado-tab" 
                 tabindex="0">
-                <app-select [SelectDisabled]="isSelectDisabled"></app-select>
-                <app-rnc-estado></app-rnc-estado>
+                <app-select [SelectDisabled]="isSelectDisabled"
+                            [FiltradoGeneral]="modeloFiltrado"
+                            (DatosFiltrados)="obtenerRncEstado($event)"
+                ></app-select>
+                <app-rnc-estado [RNCEstadoDatos]="modeloDatos.RncEstado"></app-rnc-estado>
             </div>
             <!-- End -->
         </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-secuencias',
@@ -7,4 +7,27 @@ import { Component } from '@angular/core';
 })
 export class SecuenciasComponent {
 
+  @Input() SecuenciasDatos: any[];
+
+  constructor(){}
+
+  ngOnInit(){}
+
+  // Modal Secuencias
+  fechaRegistroModal2: string = '';
+  fechaDesdeModal: string = '';
+  fechaHastaModal: string = '';
+
+  setFechaRegistro2(fechaRegistro2: string) {
+    this.fechaRegistroModal2 = fechaRegistro2;
+  }
+
+  setFechaDesdeModal(fechaDesde: string) {
+    this.fechaDesdeModal = fechaDesde;
+  }
+
+  setFechaHastaModal(fechaHasta: string) {
+    this.fechaHastaModal = fechaHasta;
+  }
+  // end modal
 }

@@ -27,7 +27,9 @@ export class SelectComponent implements OnInit {
   datosAmbientes: any[];
   datosCanal: any[];
   
-  constructor( private SelectServices: SelectService ) {}
+  constructor( private SelectServices: SelectService ) {
+    this.e_CF = false;
+  }
 
   ngOnInit() {
     this.obtenerAmbiente();

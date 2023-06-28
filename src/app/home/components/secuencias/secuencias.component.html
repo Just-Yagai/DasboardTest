@@ -1,1 +1,72 @@
-<p>secuencias works!</p>
+<!-- Tabla de Secuencias -->
+<div class="table-responsive">
+    <table class="table table-bordered mt-3 mb-auto align-middle">
+        <thead class="table-light">
+            <tr>
+                <th class="lopendeopdrachten text-center" colspan="7">Secuencias</th>
+            </tr>
+            <tr class="text-center">
+                <th>Tipo e-CF</th>
+                <th>Secuencias desde</th>
+                <th>Secuencias hasta</th>
+                <th>Nro. Autorizado</th>
+                <th>Estado</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let items of SecuenciasDatos">
+                <td>{{ items.e_CF }}</td>
+                <td>{{ items.secuenciaDesde }}</td>
+                <td>{{ items.secuenciaHasta }}</td>
+                <td>{{ items.nroAutorizacion }}</td>
+                <td>{{ items.estado }}</td>
+                <td>{{ items.realizadoEmision }}</td>
+                <td>
+                    <button (click)="setFechaRegistro2(items.fechaRegistro2);
+                                    setFechaDesdeModal(items.fechaDesde);
+                                    setFechaHastaModal(items.fechaHasta);" class="btn"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal2"><img src="assets/img/view-more.svg" width="30" height="30" alt="Ver Mas"></button>
+                </td>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-4 w-100 text-center" id="exampleModalLabel">Mas información</h1>
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead></thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Fecha Registro</th>
+                                            <td>{{ fechaRegistroModal2 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha Desde</th>
+                                            <td>{{ fechaDesdeModal }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha Hasta</th>
+                                            <td>{{ fechaHastaModal }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end Modal -->
+        </tbody>
+    </table>
+</div>

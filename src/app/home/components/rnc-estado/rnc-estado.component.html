@@ -1,1 +1,79 @@
-<p>rnc-estado works!</p>
+<div class="table-responsive">
+    <table class="table table-bordered mt-3 mb-auto align-middle">
+        <thead class="table-light">
+            <tr>
+                <th class="lopendeopdrachten text-center" colspan="6">Rnc Estado</th>
+            </tr>
+            <tr class="text-center">
+                <th>Rnc</th>
+                <th>Estado</th>
+                <th>Autorizado a Facturar</th>
+                <th>Autorizado a Solicitar Secuencia</th>
+                <th>Es Grande Contribuyente</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let items of RNCEstadoDatos; let i = index">
+                <ng-container *ngIf="editingRow !== i; else editFields">
+                    <td>{{ items.rnc }}</td>
+                    <td [ngStyle]="{ 'color': items.estado === 'Activo' ? 'green' : 'red' }">{{ items.estado }}</td>
+                    <td [ngStyle]="{ 'color': items.autorizadoAFacturar === '✓' ? 'green' : 'red' }">{{ items.autorizadoAFacturar }}</td>
+                    <td [ngStyle]="{ 'color': items.autorizadoSolicitarSecuencia === '✓' ? 'green' : 'red' }">{{ items.autorizadoSolicitarSecuencia }}</td>
+                    <td [ngStyle]="{ 'color': items.esGrandeContribuyente === '✓' ? 'green' : 'red' }">{{ items.esGrandeContribuyente }}</td>
+                    <td>
+                        <button (click)="startEditing(i)" class="btn"><img width="30" height="30" src="assets/img/edit.svg"></button>
+                        <button class="btn"><img width="30" height="30" src="assets/img/view-more.svg"></button>
+                    </td>
+                </ng-container>
+                <ng-template #editFields>
+                    <td>
+                        <label>{{ items.rnc }}</label>
+                    </td>
+                    <td>
+                        <select class="form-select" name="miselect" [(ngModel)]="items.estado"
+                            aria-label="Default select example">
+                            <option [value]="item" *ngFor="let item of listaEstado">{{item}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-icon" 
+                                    (click)="selectButton(i, 0, true);
+                                    items.autorizadoAFacturar = '✓'"
+                                    [ngClass]="{'selected': buttonStates[0][i]}">✓</button>
+                            <button class="btn btn-light btn-icon" 
+                                    (click)="selectButton(i, 0, false);
+                                    items.autorizadoAFacturar = 'X'"
+                                    [ngClass]="{'selected': !buttonStates[0][i]}">X</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 1, true);
+                                    items.autorizadoSolicitarSecuencia = '✓'"
+                                [ngClass]="{'selected': buttonStates[1][i]}">✓</button>
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 1, false);
+                                    items.autorizadoSolicitarSecuencia = 'X'"
+                                [ngClass]="{'selected': !buttonStates[1][i]}">X</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 2, true);
+                                    items.esGrandeContribuyente= '✓'"
+                                [ngClass]="{'selected': buttonStates[2][i]}">✓</button>
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 2, false);
+                                    items.esGrandeContribuyente = 'X'"
+                                [ngClass]="{'selected': !buttonStates[2][i]}">X</button>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn" (click)="saveChanges()"><img width="30" height="30" src="assets/img/correct.svg"></button>
+                        <button class="btn" (click)="cancelEditing()"><img width="30" height="30" src="assets/img/error.svg"></button>
+                    </td>
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -69,6 +69,9 @@ export class DashboardComponent implements OnInit {
             this.modeloFiltrado.ambienteID = 1;
             this.modeloFiltrado.canalID = 1;
             this.obtenerMarcas(this.modeloFiltrado);
+            this.obtenerDelegaciones(this.modeloFiltrado);
+            this.obtenerSecuencias(this.modeloFiltrado);
+            this.obtenerRncEstado(this.modeloFiltrado);
           } else {
             this.AlertServices.rncInvalido();
             this.updateDataRncInvalidos();
@@ -130,6 +133,33 @@ export class DashboardComponent implements OnInit {
     this.MarcasServices.getMarcas(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
         .subscribe((data) => {
           this.modeloDatos.Marcas = data;
+          console.log(data);
+        })
+  }
+
+  // Obtener Delegaciones
+  obtenerDelegaciones(modeloFiltrado: ModeloFilter) {
+    this.DelegacionesServices.getDelegaciones(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
+        .subscribe((data) => {
+          this.modeloDatos.Delegaciones = data;
+          console.log(data);
+        })
+  }
+
+  // Obtener Secuencias
+  obtenerSecuencias(modeloFiltrado: ModeloFilter) {
+    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
+        .subscribe((data) => {
+          this.modeloDatos.Secuencias = data;
+          console.log(data);
+        })
+  }
+
+  // Obtener RNC Estado
+  obtenerRncEstado(modeloFiltrado: ModeloFilter) {
+    this.RncEstadoServices.getRncEstado(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
+        .subscribe((data) => {
+          this.modeloDatos.RncEstado = data;
           console.log(data);
         })
   }

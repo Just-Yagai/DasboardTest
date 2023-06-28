@@ -1,0 +1,11 @@
+[
+  {
+    "rnc": "001",
+    "estado": "",
+    "autorizadoAFacturar": null,
+    "autorizadoSolicitarSecuencia": null,
+    "esGrandeContribuyente": null,
+    "AmbienteID": 1,
+    "CanalID": 1
+  }
+]
