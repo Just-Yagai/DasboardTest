@@ -11,4 +11,5 @@ export class Secuencias {
     public fechaHasta: string;
     public AmbienteID: number;
     public CanalID: number;
+    public TipoECF: number;
 }

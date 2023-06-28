@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   modeloDatos: ModeloGeneral = new ModeloGeneral();
 
   // Modelo de Filtrado
-  modeloFiltrado: ModeloFilter = new ModeloFilter('',0,'',0,0);
+  modeloFiltrado: ModeloFilter = new ModeloFilter('',0,'',0,0,0);
 
   // Datos Generales Del Contribuyente
   rnc: string;
@@ -101,10 +101,6 @@ export class DashboardComponent implements OnInit {
     this.datosTipo = [];
     this.isSelectDisabled = true;
     this.modeloDatos.Marcas = [];
-    this.modeloFiltrado.ambienteID = 1;
-    this.modeloFiltrado.canalID = 1;
-    // this.selectComponent.datosAmbientes = [];
-    // this.selectComponent.datosCanal = [];
   }
 
   clearData() {
@@ -115,10 +111,6 @@ export class DashboardComponent implements OnInit {
       this.isSelectDisabled = true;
       this.datosTipo = [];
       this.modeloDatos.Marcas = [];
-      this.modeloFiltrado.ambienteID = 1;
-      this.modeloFiltrado.canalID = 1;
-      // this.selectComponent.datosAmbientes = [];
-      // this.selectComponent.datosCanal = [];
     }
   }
 
@@ -148,7 +140,7 @@ export class DashboardComponent implements OnInit {
 
   // Obtener Secuencias
   obtenerSecuencias(modeloFiltrado: ModeloFilter) {
-    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
+    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID, modeloFiltrado.TipoECF)
         .subscribe((data) => {
           this.modeloDatos.Secuencias = data;
           console.log(data);

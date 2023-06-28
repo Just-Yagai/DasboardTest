@@ -40,5 +40,17 @@
         "finalizacion_postulacion": "N/A"
       }
     ]
+  },
+  {
+    "rnc": "004",
+    "razonSocial": "Actividades2",
+    "tipo_certificacion": [
+      {
+        "tipo": "Proveedor",
+        "estado": "No registrado",
+        "inicio_postulacion": "N/A",
+        "finalizacion_postulacion": "N/A"
+      }
+    ]
   }
 ]

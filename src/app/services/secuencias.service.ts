@@ -12,13 +12,14 @@ export class SecuenciasService {
     private http: HttpClient
   ) { }
 
-  getSecuencias(rnc: string, ambienteID: number, canalID: number): Observable<Secuencias[]> {
+  getSecuencias(rnc: string, ambienteID: number, canalID: number, TipoECF: number): Observable<Secuencias[]> {
     return this.http.get<Secuencias[]>('assets/json/secuencias.json')
       .pipe(
         map(data => data.filter(data => 
             data.rnc === rnc &&
             data.AmbienteID === ambienteID &&
-            data.CanalID === canalID
+            data.CanalID === canalID &&
+            data.TipoECF === TipoECF
           ))
       );
   }

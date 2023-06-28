@@ -17,4 +17,8 @@ export class SelectService {
   getCanal(): Observable<any>{
     return this.http.get('assets/json/canal.json');
   }
+
+  getTipoECF(): Observable<any>{
+    return this.http.get('assets/json/tipo_ECF.json');
+  }
 }

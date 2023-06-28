@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nombre": "Factura de Crédito Fiscal Electrónica (31)"
+  },
+  {
+    "id": 2,
+    "nombre": "Factura de Consumo Electrónica (32)"
+  },
+  {
+    "id": 3,
+    "nombre": " Nota de Débito Electrónica (33)"
+  },
+  {
+    "id": 4,
+    "nombre": " Nota de Débito Electrónica (34)"
+  },
+  {
+    "id": 5,
+    "nombre": "Compras Electrónico (41)"
+  },
+  {
+    "id": 6,
+    "nombre": " Gastos Menores Electrónico (43)"
+  },
+  {
+    "id": 7,
+    "nombre": "Regímenes Especiales Electrónico (44)"
+  },
+  {
+    "id": 8,
+    "nombre": " Gubernamental Electrónico (45)"
+  },
+  {
+    "id": 9,
+    "nombre": " Comprobante de Exportaciones Electrónico (46)"
+  },
+  {
+    "id": 10,
+    "nombre": " Comprobante para Pagos al Exterior Electrónico (47)"
+  }
+]

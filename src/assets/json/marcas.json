@@ -84,7 +84,13 @@
     "tipo": "dolor sit amet",
     "estado": "Disponible",
     "fecha_inicio_operacion": "2023/09/25",
-    "AmbienteID": 3,
-    "CanalID": 2
+    "AmbienteID": 1,
+    "CanalID": 1
+  },
+  {
+    "rnc": "004",
+    "tipo": "dolor sit amet",
+    "estado": "Disponible",
+    "fecha_inicio_operacion": "2023/09/25"
   }
 ]
