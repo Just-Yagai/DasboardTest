@@ -19,7 +19,7 @@ export class SecuenciasService {
             data.rnc === rnc &&
             data.AmbienteID === ambienteID &&
             data.CanalID === canalID &&
-            data.TipoECF === TipoECF
+            (TipoECF != 0 ? data.TipoECF === TipoECF: true)
           ))
       );
   }
