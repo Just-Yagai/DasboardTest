@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { ModeloFilter } from '../core';
-
+import { TiposECF } from '../core/model/utils/tipoECF';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +18,7 @@ export class SelectService {
     return this.http.get('assets/json/canal.json');
   }
 
-  getTipoECF(): Observable<any>{
-    return this.http.get('assets/json/tipo_ECF.json');
+  getTipoECF(): Observable<TiposECF[]>{
+    return this.http.get<TiposECF[]>('assets/json/tipo_ECF.json');
   }
 }

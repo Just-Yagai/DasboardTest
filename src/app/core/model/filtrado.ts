@@ -6,6 +6,6 @@ export class ModeloFilter {
         public nombre: string,
         public ambienteID: number,
         public canalID: number,
-        public TipoECF: number
+        public TipoECF: number,
     ){}
 }

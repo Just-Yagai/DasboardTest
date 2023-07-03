@@ -25,7 +25,7 @@
         </div>
         <div *ngIf="e_CF === true" class="col-lg">
             <select class="form-select" [disabled]="SelectDisabled" (change)="onTipoECF($any($event.target).value)">
-                <option selected>Seleccionar...</option>
+                <!-- <option selected>Seleccionar...</option> -->
                 <option *ngFor="let items of datosTipoECF" [value]="items.id">{{ items.nombre }}</option>
             </select>
         </div>

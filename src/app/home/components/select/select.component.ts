@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Marcas, ModeloFilter, Secuencias } from 'src/app/core';
 import { ModeloGeneral } from 'src/app/core/model/general';
+import { TiposECF } from 'src/app/core/model/utils/tipoECF';
 import { SelectService } from 'src/app/services/select.service';
 
 @Component({
@@ -23,11 +24,12 @@ export class SelectComponent implements OnInit {
   ambienteID: number;
   canalID: number;
   TipoECF: number;
+  
 
   // Datos: Ambiente y Canal
   datosAmbientes: any[];
   datosCanal: any[];
-  datosTipoECF: any[];
+  datosTipoECF: TiposECF[] = [];
 
   constructor(private SelectServices: SelectService) {
     this.e_CF = false;
@@ -57,6 +59,8 @@ export class SelectComponent implements OnInit {
     this.SelectServices.getTipoECF()
       .subscribe((data) => {
         this.datosTipoECF = data;
+        this.datosTipoECF.unshift({id: 0, nombre: 'Todos'});
+        console.log(this.datosTipoECF);
       });
   }
 
