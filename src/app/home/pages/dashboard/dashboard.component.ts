@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
 
   // Datos: Marcas, Delegaciones, Secuencias, RNC Estado
   datosMarcas: Marcas[];
+  datosAPI: Marcas;
 
   constructor(
     private DashboardServices: DashboardService,
@@ -51,8 +52,18 @@ export class DashboardComponent implements OnInit {
     private AlertServices: AlertsService
   ){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.obtenerDataApi();
+  }
 
+  obtenerDataApi(){
+    this.DashboardServices.getAPi()
+        .subscribe(data => {
+          this.datosAPI = data;
+          console.log(this.datosAPI);
+        })
+  }
+  
   // Obtener RNC
   obtenerRNC(rnc: string) {
     if (!rnc) {

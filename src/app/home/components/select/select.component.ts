@@ -60,7 +60,7 @@ export class SelectComponent implements OnInit {
       .subscribe((data) => {
         this.datosTipoECF = data;
         this.datosTipoECF.unshift({id: 0, nombre: 'Todos'});
-        console.log(this.datosTipoECF);
+        // console.log(this.datosTipoECF);
       });
   }
 

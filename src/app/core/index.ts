@@ -4,3 +4,4 @@ export { Delegaciones } from "./model/utils/delegaciones";
 export { ModeloFilter } from "./model/filtrado";
 export { Secuencias } from "./model/utils/secuencias";
 export { RNCEstado } from "./model/utils/rncEstado";
+
