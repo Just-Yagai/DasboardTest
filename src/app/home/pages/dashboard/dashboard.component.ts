@@ -53,16 +53,16 @@ export class DashboardComponent implements OnInit {
   ){}
 
   ngOnInit(){
-    this.obtenerDataApi();
+    // this.obtenerDataApi();
   }
 
-  obtenerDataApi(){
-    this.DashboardServices.getAPi()
-        .subscribe(data => {
-          this.datosAPI = data;
-          console.log(this.datosAPI);
-        })
-  }
+  // obtenerDataApi(){
+  //   this.DashboardServices.getAPi()
+  //       .subscribe(data => {
+  //         this.datosAPI = data;
+  //         console.log(this.datosAPI);
+  //       })
+  // }
   
   // Obtener RNC
   obtenerRNC(rnc: string) {
@@ -137,7 +137,7 @@ export class DashboardComponent implements OnInit {
     this.MarcasServices.getMarcas(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
         .subscribe((data) => {
           this.modeloDatos.Marcas = data;
-          // console.log(data);
+          console.log(data);
         })
   }
 

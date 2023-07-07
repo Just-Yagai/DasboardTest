@@ -45,6 +45,7 @@ export class SelectComponent implements OnInit {
     this.SelectServices.getAmbiente()
       .subscribe((data) => {
         this.datosAmbientes = data;
+        console.log(this.datosAmbientes)
       });
   }
 
@@ -52,6 +53,7 @@ export class SelectComponent implements OnInit {
     this.SelectServices.getCanal()
       .subscribe((data) => {
         this.datosCanal = data;
+        console.log(this.datosAmbientes)
       });
   }
 
@@ -68,12 +70,14 @@ export class SelectComponent implements OnInit {
     this.ambienteID = parseInt(value);
     this.FiltradoGeneral.ambienteID = this.ambienteID;
     this.DatosFiltrados.emit(this.FiltradoGeneral);
+    console.log(this.DatosFiltrados)
   }
 
   onCanalChange(value: string) {
     this.canalID = parseInt(value);
     this.FiltradoGeneral.canalID = this.canalID;
     this.DatosFiltrados.emit(this.FiltradoGeneral);
+    console.log(this.DatosFiltrados)
   }
 
   onTipoECF(value: string) {

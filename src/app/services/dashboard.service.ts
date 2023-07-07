@@ -16,9 +16,9 @@ export class DashboardService {
     private http: HttpClient
   ) { }
   
-  public getAPi(): Observable<Marcas> {
-    return this.http.get<Marcas>(this.apiUrl + 'Marcas/ObtenerMarcas');
-  }
+  // public getAPi(): Observable<Marcas> {
+  //   return this.http.get<Marcas>(this.apiUrl + 'Marcas/ObtenerMarcas');
+  // }
 
   // getRNC(rnc: string): Observable<Dashboard | undefined> {
   //   return this.http.get<Dashboard[]>('assets/json/contribuyentes.json')
