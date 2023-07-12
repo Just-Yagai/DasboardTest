@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   // Datos: Marcas, Delegaciones, Secuencias, RNC Estado
   datosMarcas: Marcas[];
   datosAPI: Marcas;
-
+//probando branch prueba2
   constructor(
     private DashboardServices: DashboardService,
     private MarcasServices: MarcasService,
@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
       this.AlertServices.rncNoIntroducido();
       return;
     }
-//probando branch prueba
+
     this.DashboardServices.getRNC(rnc)
         .subscribe((data) => {
           if (data) {
