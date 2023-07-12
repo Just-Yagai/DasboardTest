@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
       this.AlertServices.rncNoIntroducido();
       return;
     }
-
+//probando branch prueba
     this.DashboardServices.getRNC(rnc)
         .subscribe((data) => {
           if (data) {
