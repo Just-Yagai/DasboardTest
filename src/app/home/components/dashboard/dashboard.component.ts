@@ -5,14 +5,14 @@ import { MarcasService } from 'src/app/services/marcas.service';
 import { DelegacionesService } from 'src/app/services/delegaciones.service';
 import { SecuenciasService } from 'src/app/services/secuencias.service';
 import { RncEstadoService } from 'src/app/services/rnc-estado.service';
-import { AlertsService } from '../utils/alerts.service';
+import { AlertsService } from '../../pages/utils/alerts.service';
 
 import { Dashboard, Marcas, ModeloFilter } from 'src/app/core';
 import { TipoCertificacion } from 'src/app/core/model/utils/dashboard';
 import { ModeloGeneral } from 'src/app/core/model/general';
 
 // ViewChild
-import { SelectComponent } from '../../components/select/select.component';
+import { SelectComponent } from '../select/select.component';
 
 @Component({
   selector: 'app-dashboard',
