@@ -56,13 +56,6 @@ export class DashboardComponent implements OnInit {
     // this.obtenerDataApi();
   }
 
-  // obtenerDataApi(){
-  //   this.DashboardServices.getAPi()
-  //       .subscribe(data => {
-  //         this.datosAPI = data;
-  //         console.log(this.datosAPI);
-  //       })
-  // }
   
   // Obtener RNC
   obtenerRNC(rnc: string) {

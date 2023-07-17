@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -10,7 +10,7 @@ import { SecuenciasComponent } from './components/secuencias/secuencias.componen
 import { RncEstadoComponent } from './components/rnc-estado/rnc-estado.component';
 import { SelectComponent } from './components/select/select.component';
 import { LoginComponent } from './pages/login/login.component';
-
+;
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -24,7 +24,8 @@ import { LoginComponent } from './pages/login/login.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

@@ -1,25 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
+  loginForm = new FormGroup({
+    username : new FormControl('',Validators.required),
+    password : new FormControl('',Validators.required),
+
+  })
 
   constructor(private router: Router,){
-    this.username = 'pedro';
-    this.password = '123';
+    
+  }
+  ngOnInit(): void {
+   
   }
 
-username: string;
-password: string;
+  onLogin(form: any){
+    console.log(form)
+  }
 
-login(){
-console.log(this.username);
-console.log(this.password);
-this.router.navigate(['/home/Dashboard']);
-}
+
+
+// login(){
+
+// this.router.navigate(['/home/Dashboard']);
+// }
 
 }
