@@ -1,9 +1,9 @@
 <div class="login-page">
   <h2 class="text-center mb-4">Prueba de Permisos</h2>
   <div class="form">
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" class="login-form"  >
-      <input class="form-control" type="text" placeholder="Usuario" formControlName="username"  />
-      <input class="form-control" type="password" placeholder="Password" formControlName="password" />
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form"  >
+      <input class="form-control" type="text" placeholder="username" formControlName="username"  />
+      <input class="form-control" type="password" placeholder="password" formControlName="password" />
       <div class="d-grid gap-2">
         <button class="btn btn-success" type="submit">Login</button>
       </div>
