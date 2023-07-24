@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -13,10 +13,14 @@ export class ApiService {
     private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient ) {}
+  
+  
 
-loginByApi(form:Login):Observable<ResponseI>{
-    let dirrecion = this.apiUrl + "Login";
-    return this.http.post<ResponseI>(dirrecion,form);
+loginByApi(loginData: Login): Observable<string> { // Cambiamos el tipo de Observable a 'string'
+  const { username, password } = loginData;
+  const url = `${this.apiUrl}Login?username=${username}&password=${password}`;
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.post<string>(url, null, { headers, responseType: 'text' as 'json' }); // Especificamos el responseType como 'text'
 }
   
 }

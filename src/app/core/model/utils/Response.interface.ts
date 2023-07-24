@@ -1,4 +1,4 @@
 export interface ResponseI {
-    status?:string ;
-    response? :string;
+    status:string ;
+    statusText: any;
   }
