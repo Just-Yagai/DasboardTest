@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { AuthInterceptor } from './home/pages/Interceptor/Interceptor.component';
+import { AuthGuard } from './home/components/guardianderuta/auth.guard';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,9 @@ import { AuthInterceptor } from './home/pages/Interceptor/Interceptor.component'
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
