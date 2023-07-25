@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
 
   // Modelo de Filtrado
   modeloFiltrado: ModeloFilter = new ModeloFilter('',0,'',0,0,0);
-
+  //migracion realizada
   // Datos Generales Del Contribuyente
   rnc: string;
   razonSocial: string;
