@@ -27,7 +27,7 @@ export class MarcasService {
   }
   
   updateMarca( marca: any): Observable<any> {
-    return this.http.put(this.apiUrl + `Marcas/ActualizarMarcas?rnc`, marca);
+    return this.http.put(this.apiUrl + `Marcas/ActualizarMarcas/${marca.rnc}`, marca);
   }
 }
 

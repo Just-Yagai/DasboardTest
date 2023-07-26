@@ -77,6 +77,8 @@ export class DashboardComponent implements OnInit {
             this.obtenerDelegaciones(this.modeloFiltrado);
             this.obtenerSecuencias(this.modeloFiltrado);
             this.obtenerRncEstado(this.modeloFiltrado);
+            this.updatemarca;
+            
           } else {
             this.AlertServices.rncInvalido();
             this.updateDataRncInvalidos();
@@ -132,6 +134,14 @@ export class DashboardComponent implements OnInit {
           this.modeloDatos.Marcas = data;
           console.log(data);
         })
+  }
+
+  updatemarca(marca: Marcas){
+    this.MarcasServices.updateMarca(marca)
+    .subscribe((data) => {
+      this.modeloDatos.Marcas = data;
+      console.log(data);
+    })
   }
 
   // Obtener Delegaciones
