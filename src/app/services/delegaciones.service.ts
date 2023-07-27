@@ -17,14 +17,25 @@ export class DelegacionesService {
 
   getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<Delegaciones[]> {
     return this.http.get<Delegaciones[]>(this.apiUrl +`Delegaciones/ObtenerDelegacionesBy?rnc=${rnc}&AmbienteID=${ambienteID}&CanalID=${canalID}`)
-      // .pipe(
-      //   map(data => data.filter(data => 
-      //       data.rnc === rnc &&
-      //       data.AmbienteID === ambienteID &&
-      //       data.CanalID === canalID
-      //     ))
-      // );
   }
+
+  updateDelegaciones(delegaciones:any ): Observable<any> {
+    return this.http.put(this.apiUrl + `Delegaciones/ActualizarDelegaciones/${delegaciones.rnc}`, delegaciones);
+  }
+
+  // getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<Delegaciones[]> {
+  //   return this.http.get<Delegaciones[]>('assets/json/delegaciones.json')
+  //     .pipe(
+  //       map(data => data.filter(data => 
+  //           data.rnc === rnc &&
+  //           data.AmbienteID === ambienteID &&
+  //           data.CanalID === canalID
+  //         ))
+  //     );
+  // }
+
+
+
 
   
 }

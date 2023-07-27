@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RncEstadoService } from 'src/app/services/rnc-estado.service';
 
 @Component({
   selector: 'app-rnc-estado',
@@ -9,7 +10,7 @@ export class RncEstadoComponent {
 
   @Input() RNCEstadoDatos: any[];
 
-  constructor() {}
+  constructor(private RncServices: RncEstadoService) {}
 
   ngOnInit() {}
 
@@ -32,9 +33,16 @@ export class RncEstadoComponent {
   selectOption(row: any, field: string, value: string) {
     row[field] = value === 'si' ? '✓' : 'X';
   }
+  
 
-  saveChanges(){
+  saveChanges(rncEstado:any ){
     this.editingRow = -1;
+
+    this.RncServices.updaterncEstado(rncEstado)
+    .subscribe(data => {
+        console.log(data);
+      }
+    )
   }
 
   startEditing(index: number) {
@@ -46,4 +54,26 @@ export class RncEstadoComponent {
     this.RNCEstadoDatos[this.editingRow] = { ...this.originalData[this.editingRow] };
     this.editingRow = -1;
   }
+  
+  // Modal Ver mas Informacion
+  rncModal: string = '';
+  fechaRegistroModal: string = '';
+  fechaActualizacionModal: string = '';
+  identificacionModal: string = '';
+
+  setRncModal(rnc: string) {
+    this.rncModal = rnc;
+  }
+
+  setFechaRegistro(fechaRegistro: string) {
+    this.fechaRegistroModal = fechaRegistro;
+  }
+
+  setFechaActualizacion(fechaActualizacion: string) {
+    this.fechaActualizacionModal = fechaActualizacion;
+  }
+
+  setIdentificacion(identificacion: string) {
+    this.identificacionModal = identificacion;
+  } 
 }

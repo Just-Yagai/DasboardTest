@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DelegacionesService } from 'src/app/services/delegaciones.service';
 
 @Component({
   selector: 'app-delegaciones',
@@ -9,7 +10,7 @@ export class DelegacionesComponent implements OnInit {
 
   @Input() DelegacionesDatos: any[];
 
-  constructor() {}
+  constructor( private DelegacionesServices: DelegacionesService) {}
 
   ngOnInit() {}
 
@@ -34,37 +35,42 @@ export class DelegacionesComponent implements OnInit {
   }
 
   // Funciones confirmar seleccion
-  isFirmanteAutorizadoSelected: boolean = false;
+  // isFirmanteAutorizadoSelected: boolean = false;
 
-  selectFirmanteAutorizado(value: boolean) {
-    this.isFirmanteAutorizadoSelected = value;
-  }
+  // selectFirmanteAutorizado(value: boolean) {
+  //   this.isFirmanteAutorizadoSelected = value;
+  // }
 
-  isSolicitanteAutorizadoSelected: boolean = false;
+  // isSolicitanteAutorizadoSelected: boolean = false;
 
-  selectSolicitanteAutorizado(value: boolean) {
-    this.isSolicitanteAutorizadoSelected = value;
-  }
+  // selectSolicitanteAutorizado(value: boolean) {
+  //   this.isSolicitanteAutorizadoSelected = value;
+  // }
 
-  isAprobadorComercialSelected: boolean = false;
+  // isAprobadorComercialSelected: boolean = false;
 
-  selectAprobadorComercial(value: boolean) {
-    this.isAprobadorComercialSelected = value;
-  }
+  // selectAprobadorComercial(value: boolean) {
+  //   this.isAprobadorComercialSelected = value;
+  // }
 
-  isAdministradorSelected: boolean = false;
+  // isAdministradorSelected: boolean = false;
 
-  selectAdministrador(value: boolean){
-    this.isAdministradorSelected = value;
-  }
+  // selectAdministrador(value: boolean){
+  //   this.isAdministradorSelected = value;
+  // }
 
   startEditing(index: number) {
     this.editingRow = index;
     this.originalData[index] = { ...this.DelegacionesDatos[index] };
   }
 
-  saveChanges(){
+  saveChanges(delegaciones: any){
     this.editingRow = -1;
+
+    this.DelegacionesServices.updateDelegaciones(delegaciones)
+    .subscribe(resp => {
+      console.log(resp);
+    });
   }
 
   cancelEditing() {

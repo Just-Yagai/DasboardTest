@@ -25,4 +25,8 @@ export class RncEstadoService {
       //     ))
       // );
   }
+
+  updaterncEstado(rncEstado:any ):Observable<any>{
+    return this.http.put<any>(this.apiurl + `RncEstado/ActualizarDelegaciones/${rncEstado.rnc}`,rncEstado)
+  }
 }

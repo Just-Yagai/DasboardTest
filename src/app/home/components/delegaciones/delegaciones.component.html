@@ -32,7 +32,7 @@
                                         setIdentificacion(items.identificacion)"
                                         class="btn"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal1">
+                                        data-bs-target="#exampleModal2">
                                         <img width="30" height="30" src="assets/img/view-more.svg"></button>
                     </td>
                 </ng-container>
@@ -87,17 +87,17 @@
                         </select>
                     </td>
                     <td>
-                        <button class="btn" (click)="saveChanges()"><img width="30" height="30" src="assets/img/correct.svg"></button>
+                        <button class="btn" (click)="saveChanges(items)"><img width="30" height="30" src="assets/img/correct.svg"></button>
                         <button class="btn" (click)="cancelEditing()"><img width="30" height="30" src="assets/img/error.svg"></button>
                     </td>
                 </ng-template>
             </tr>
             <!-- Modal -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-4 w-100 text-center" id="exampleModalLabel1">Mas información</h1>
+                                <h1 class="modal-title fs-4 w-100 text-center" id="exampleModalLabel2">Mas información</h1>
                             </div>
                             <div class="modal-body">
                                 <div class="table-responsive">
