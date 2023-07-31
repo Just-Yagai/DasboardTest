@@ -1,12 +1,46 @@
-<div class="login-page">
-  <h2 class="text-center mb-4">Prueba de Permisos</h2>
-  <div class="form">
+<div class=" container overflow-hidden mt " style="width: 22rem;">
+  <div class="card" >
+  <h2 class="card-header text-center mb-4">Acesso</h2>
+   <div class="card-body">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form"  >
       <input class="form-control" type="text" placeholder="username" formControlName="username"  />
-      <input class="form-control" type="password" placeholder="password" formControlName="password" />
-      <div class="d-grid gap-2">
-        <button class="btn btn-success" type="submit">Login</button>
+      <input class="form-control mt-3" type="password" placeholder="password" formControlName="password" />
+        <div class=" d-grid flex justify-content-end mt-3 ">
+          <button class="btn btn-success" type="submit">Login</button>   
       </div>
     </form>
   </div>
 </div>
+</div>
+
+
+ 
+<!-- <div class="w-25 container-sm overflow-hidden mt ">
+  <div class="card" >
+  <h2 class="card-header text-center">Acceso</h2>
+    <div class="card-body">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="">
+        
+        <div class=" flex-sm-wrap col-6 d-grid d-flex justify-content-center row row-cols" >
+          <input
+          class="form-control border mt-3 mb-3 "
+          type="text"
+          placeholder="username"
+          formControlName="username"
+        />
+      </div>
+        <input
+          class="form-control mb-3"
+          type="password"
+          placeholder="password"
+          formControlName="password"
+        />
+      
+        <div class="d-grid gap-2 d-md-flex justify-content-end ">
+          <button class="btn btn-success" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+ -->
