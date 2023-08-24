@@ -10,27 +10,20 @@ import { environment } from 'src/environments/environment';
 export class DashboardService {
 
   private apiUrl = environment.apiUrl;
-  // private urlApi = 'https://localhost:7061/api/Marcas/ObtenerMarcas';
   
   constructor(
     private http: HttpClient
   ) { }
   
-  // public getAPi(): Observable<Marcas> {
-  //   return this.http.get<Marcas>(this.apiUrl + 'Marcas/ObtenerMarcas');
-  // }
-
-  // getRNC(rnc: string): Observable<Dashboard | undefined> {
-  //   return this.http.get<Dashboard[]>('assets/json/contribuyentes.json')
-  //     .pipe(
-  //       map((data: Dashboard[]) => data.find((item: Dashboard) => item.rnc === rnc))
-  //     );
-  // }
 
   getRNC(rnc: string): Observable<Dashboard | undefined> {
-    return this.http.get<Dashboard[]>(this.apiUrl + `Contribuyente/ObtenerContribuyentesByRnc?rnc=${rnc}`)
-      .pipe(
-        map((data: Dashboard[]) => data.find((item: Dashboard) => item.rnc === rnc))
-      );
+    return this.http.get<Dashboard[]>(`${this.apiUrl}Contribuyente/ObtenerContribuyente?rnc=${rnc}`)
+    .pipe(
+      map((data: Dashboard[]) => {
+        const result = data.find((item: Dashboard) => item.rnc === rnc);
+        console.log(result); 
+        return result;
+      })
+    );
   }
 }

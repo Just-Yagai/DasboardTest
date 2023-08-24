@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Delegaciones } from '../core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,8 +15,17 @@ export class DelegacionesService {
     private http: HttpClient
   ) { }
 
+  // getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<Delegaciones[]> {
+  //   return this.http.get<Delegaciones[]>(this.apiUrl +`Delegaciones/ObtenerDelegacionesBy?rnc=${rnc}&AmbienteID=${ambienteID}&CanalID=${canalID}`)
+  // }
+
   getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<Delegaciones[]> {
-    return this.http.get<Delegaciones[]>(this.apiUrl +`Delegaciones/ObtenerDelegacionesBy?rnc=${rnc}&AmbienteID=${ambienteID}&CanalID=${canalID}`)
+    return this.http.get<Delegaciones[]>(this.apiUrl +`DelegacionDb/ObtenerDelegaciones?ambiente=${ambienteID}&rnc=${rnc}&canal=${canalID}`)
+    .pipe(
+      tap((data: Delegaciones[]) => {
+        console.log(data); // Imprimir datos por consola
+      })
+    );
   }
 
   updateDelegaciones(delegaciones:any ): Observable<any> {

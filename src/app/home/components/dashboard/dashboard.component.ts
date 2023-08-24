@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
 
   updateDataRncValidos(data: Dashboard) {
     this.razonSocial = data.razonSocial;
-    this.tipoCertificacion = data.tipo_certificacion;
+    this.tipoCertificacion = data.tiposCertificacion;
     this.isSelectDisabled = false;
 
     const tipoEmisor = this.tipoCertificacion.find((tipo: any) => tipo.tipo === 'Emisor');
@@ -97,8 +97,8 @@ export class DashboardComponent implements OnInit {
     this.selectedTipoCertificacion = tipoEmisor ? 'Emisor' : tipoProveedor ? 'Proveedor' : null;
     const tipoSeleccionado = tipoEmisor || tipoProveedor;
     this.datosTipo.estado = tipoSeleccionado ? tipoSeleccionado.estado : '';
-    this.datosTipo.inicio_postulacion = tipoSeleccionado ? tipoSeleccionado.inicio_postulacion : '';
-    this.datosTipo.finalizacion_postulacion = tipoSeleccionado ? tipoSeleccionado.finalizacion_postulacion : '';
+    this.datosTipo.inicioPostulacion = tipoSeleccionado ? tipoSeleccionado.inicioPostulacion : '';
+    this.datosTipo.finalizacionPostulacion = tipoSeleccionado ? tipoSeleccionado.finalizacionPostulacion : '';
   }
 
   updateDataRncInvalidos() {
@@ -135,14 +135,6 @@ export class DashboardComponent implements OnInit {
           console.log(data);
         })
   }
-
-  // updatemarca(marca: Marcas){
-  //   this.MarcasServices.updateMarca(marca)
-  //   .subscribe((data) => {
-  //     this.modeloDatos.Marcas = data;
-  //     console.log(data);
-  //   })
-  //}
 
   // Obtener Delegaciones
   obtenerDelegaciones(modeloFiltrado: ModeloFilter) {
