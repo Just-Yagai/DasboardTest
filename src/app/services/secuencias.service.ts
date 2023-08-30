@@ -14,15 +14,20 @@ export class SecuenciasService {
     private http: HttpClient
   ) { }
 
+  // getSecuencias(rnc: string, ambienteID: number, canalID: number, TipoECF: number): Observable<Secuencias[]> {
+  //   return this.http.get<Secuencias[]>(this.apiurl + `Secuencia/GetSecuenciaBy?rnc=${rnc}&AmbienteID=${ambienteID}&CanalID=${canalID}&TipoECF=${TipoECF}`)
+  //     // .pipe(
+  //     //   map(data => data.filter(data => 
+  //     //       data.rnc === rnc &&
+  //     //       data.AmbienteID === ambienteID &&
+  //     //       data.CanalID === canalID &&
+  //     //       (TipoECF != 0 ? data.TipoECF === TipoECF: true)
+  //     //     ))
+  //     // );
+  // }
+
   getSecuencias(rnc: string, ambienteID: number, canalID: number, TipoECF: number): Observable<Secuencias[]> {
-    return this.http.get<Secuencias[]>(this.apiurl + `Secuencia/GetSecuenciaBy?rnc=${rnc}&AmbienteID=${ambienteID}&CanalID=${canalID}&TipoECF=${TipoECF}`)
-      // .pipe(
-      //   map(data => data.filter(data => 
-      //       data.rnc === rnc &&
-      //       data.AmbienteID === ambienteID &&
-      //       data.CanalID === canalID &&
-      //       (TipoECF != 0 ? data.TipoECF === TipoECF: true)
-      //     ))
-      // );
+    return this.http.get<Secuencias[]>(this.apiurl +`Secuencia/ObtenerSecuencia?ambiente=${ambienteID}&rnc=${rnc}&CanalID=${canalID}&TipoECF=${TipoECF}`)
+    
   }
 }

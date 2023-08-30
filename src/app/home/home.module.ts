@@ -11,6 +11,9 @@ import { RncEstadoComponent } from './components/rnc-estado/rnc-estado.component
 import { SelectComponent } from './components/select/select.component';
 import { LoginComponent } from './pages/login/login.component';
 
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -25,7 +28,9 @@ import { LoginComponent } from './pages/login/login.component';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatTableModule
   ]
 })
 export class HomeModule { }

@@ -1,18 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-secuencias',
   templateUrl: './secuencias.component.html',
   styleUrls: ['./secuencias.component.css']
 })
-export class SecuenciasComponent {
+export class SecuenciasComponent  {
 
   @Input() SecuenciasDatos: any[];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(){}
+  constructor() {}
 
-  ngOnInit(){}
-
+  ngAfterViewInit() {
+    this.paginator._intl.itemsPerPageLabel='Registros Por Página';
+  }
+  
   // Modal Secuencias
   fechaRegistroModal2: string = '';
   fechaDesdeModal: string = '';

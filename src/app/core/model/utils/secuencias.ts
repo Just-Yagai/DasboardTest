@@ -1,6 +1,6 @@
 export class Secuencias {
     public rnc: string;
-    public e_CF: string;
+    public e_cf: string;
     public secuenciaDesde: string;
     public secuenciaHasta: string;
     public nroAutorizacion: string;

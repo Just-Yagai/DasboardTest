@@ -7,6 +7,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { AuthInterceptor } from './home/pages/Interceptor/Interceptor.component';
 import { AuthGuard } from './home/components/guardianderuta/auth.guard';
 
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +19,8 @@ import { AuthGuard } from './home/components/guardianderuta/auth.guard';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    
   ],
   providers: [
     // Agrega el AuthInterceptor en la lista de proveedores
