@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center" *ngFor="let items of SecuenciasDatos let i = index;">
+            <tr class="text-center" *ngFor="let items of SecuenciasDatos.result let i = index;">
                 <ng-container
                     *ngIf="i >= paginator.pageIndex * paginator.pageSize && i < (paginator.pageIndex + 1) * paginator.pageSize">
                     <td>{{ items.e_cf }}</td>

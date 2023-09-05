@@ -15,10 +15,10 @@ export class SecuenciasService {
     private http: HttpClient
   ) { }
 
-  getSecuencias(rnc: string, ambienteID: number, canalID: number, TipoECF: number, pageSize: number, pageNumber:number ): Observable<DatosSecuencias[]> {
-    return this.http.get<DatosSecuencias[]>(this.apiurl +`Secuencia/ObtenerSecuencia?ambiente=${ambienteID}&rnc=${rnc}&CanalID=${canalID}&TipoECF=${TipoECF}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
+  getSecuencias(rnc: string, ambienteID: number, canalID: number, TipoECF: number, pageSize: number, pageNumber:number ): Observable<DatosSecuencias> {
+    return this.http.get<DatosSecuencias>(this.apiurl +`Secuencia/ObtenerSecuencia?ambiente=${ambienteID}&rnc=${rnc}&CanalID=${canalID}&TipoECF=${TipoECF}&pageNumber=${pageNumber}&pageSize=${pageSize}`)
     .pipe(
-      tap((data: DatosSecuencias[]) => {
+      tap((data: DatosSecuencias) => {
         console.log(data);
       })
     );

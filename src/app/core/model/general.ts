@@ -7,7 +7,7 @@ import { Secuencias } from "./utils/secuencias";
 export class ModeloGeneral {
     public Marcas: Marcas[];
     public Delegaciones: Delegaciones[];   
-    public DatosSecuencias: DatosSecuencias[];
+    public DatosSecuencias: DatosSecuencias;
     public RncEstado: RNCEstado[];
 
 }
