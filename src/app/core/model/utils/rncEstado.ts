@@ -1,5 +1,5 @@
 export class RNCEstado {
-    public rnc: string;
+    public Rnc: string;
     public estado: string;
     public autorizadoAFacturar: boolean;
     public autorizadoSolicitarSecuencia: boolean;

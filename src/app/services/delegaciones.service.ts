@@ -15,15 +15,12 @@ export class DelegacionesService {
     private http: HttpClient
   ) { }
 
-  // getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<Delegaciones[]> {
-  //   return this.http.get<Delegaciones[]>(this.apiUrl +`Delegaciones/ObtenerDelegacionesBy?rnc=${rnc}&AmbienteID=${ambienteID}&CanalID=${canalID}`)
-  // }
-
+  
   getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<Delegaciones[]> {
-    return this.http.get<Delegaciones[]>(this.apiUrl +`DelegacionDb/ObtenerDelegaciones?ambiente=${ambienteID}&rnc=${rnc}&canal=${canalID}`)
+    return this.http.get<Delegaciones[]>(`${this.apiUrl}DelegacionDb/ObtenerDelegaciones?ambiente=${ambienteID}&rnc=${rnc}&canal=${canalID}`)
     .pipe(
       tap((data: Delegaciones[]) => {
-        console.log(data); // Imprimir datos por consola
+        console.log(data);
       })
     );
   }
@@ -31,20 +28,4 @@ export class DelegacionesService {
   updateDelegaciones(delegaciones:any ): Observable<any> {
     return this.http.put(this.apiUrl + `Delegaciones/ActualizarDelegaciones/${delegaciones.rnc}`, delegaciones);
   }
-
-  // getDelegaciones(rnc: string, ambienteID: number, canalID: number): Observable<Delegaciones[]> {
-  //   return this.http.get<Delegaciones[]>('assets/json/delegaciones.json')
-  //     .pipe(
-  //       map(data => data.filter(data => 
-  //           data.rnc === rnc &&
-  //           data.AmbienteID === ambienteID &&
-  //           data.CanalID === canalID
-  //         ))
-  //     );
-  // }
-
-
-
-
-  
 }

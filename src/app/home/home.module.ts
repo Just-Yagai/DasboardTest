@@ -11,8 +11,9 @@ import { RncEstadoComponent } from './components/rnc-estado/rnc-estado.component
 import { SelectComponent } from './components/select/select.component';
 import { LoginComponent } from './pages/login/login.component';
 
+//MATERIAL ANGULAR
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +30,7 @@ import {MatTableModule} from '@angular/material/table';
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule,
-    MatTableModule
+    MatPaginatorModule
   ]
 })
 export class HomeModule { }

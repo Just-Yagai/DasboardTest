@@ -13,8 +13,6 @@ export class ApiService {
     private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient ) {}
-  
-  
 
 loginByApi(loginData: Login): Observable<string> { // Cambiamos el tipo de Observable a 'string'
   const url = `${this.apiUrl}Login?username=${loginData.username}&password=${loginData.password}`;

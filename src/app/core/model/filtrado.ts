@@ -7,5 +7,7 @@ export class ModeloFilter {
         public ambienteID: number,
         public canalID: number,
         public TipoECF: number,
+        public pageSize:number,
+        public pageNumber:number
     ){}
 }

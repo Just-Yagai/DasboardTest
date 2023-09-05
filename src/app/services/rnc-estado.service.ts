@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { RNCEstado } from '../core/model/utils/rncEstado';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -16,14 +16,12 @@ export class RncEstadoService {
   ) { }
 
   getRncEstado(rnc: string, ambienteID: number, canalID: number): Observable<RNCEstado[]> {
-    return this.http.get<RNCEstado[]>(this.apiurl + `RncEstado/GetRncEstadoBy?rnc=${rnc}&AmbienteID=${ambienteID}&CanalID=${canalID}`)
-      // .pipe(
-      //   map(data => data.filter(data => 
-      //       data.rnc === rnc &&
-      //       data.AmbienteID === ambienteID &&
-      //       data.CanalID === canalID
-      //     ))
-      // );
+    return this.http.get<RNCEstado[]>(`${this.apiurl}RncEstado/ObtenerRncEstado?ambiente=${ambienteID}&rnc=${rnc}&CanalID=${canalID}`)
+    .pipe(
+      tap((data: RNCEstado[]) => {
+        console.log(data);
+      })
+    );
   }
 
   updaterncEstado(rncEstado:any ):Observable<any>{

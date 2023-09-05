@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   modeloDatos: ModeloGeneral = new ModeloGeneral();
 
   // Modelo de Filtrado
-  modeloFiltrado: ModeloFilter = new ModeloFilter('',0,'',0,0,0);
+  modeloFiltrado: ModeloFilter = new ModeloFilter('',0,'',0,0,0,0,0);
   //migracion realizada
   // Datos Generales Del Contribuyente
   rnc: string;
@@ -73,6 +73,8 @@ export class DashboardComponent implements OnInit {
             this.modeloFiltrado.ambienteID = 1;
             this.modeloFiltrado.canalID = 1;
             this.modeloFiltrado.TipoECF = 0;
+            this.modeloFiltrado.pageSize = 1;
+            this.modeloFiltrado.pageNumber = 5;
             this.obtenerMarcas(this.modeloFiltrado);
             this.obtenerDelegaciones(this.modeloFiltrado);
             this.obtenerSecuencias(this.modeloFiltrado);
@@ -147,9 +149,9 @@ export class DashboardComponent implements OnInit {
 
   // Obtener Secuencias
   obtenerSecuencias(modeloFiltrado: ModeloFilter) {
-    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID, modeloFiltrado.TipoECF)
+    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID, modeloFiltrado.TipoECF,modeloFiltrado.pageNumber,modeloFiltrado.pageSize)
         .subscribe((data) => {
-          this.modeloDatos.Secuencias = data;
+          this.modeloDatos.DatosSecuencias = data;
           // console.log(data);
         })
   }

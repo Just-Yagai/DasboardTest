@@ -16,7 +16,7 @@
             <tr *ngFor="let items of MarcasDatos">
                 <td>{{ items.tipo }}</td>
                 <td [ngStyle]="{ 'color': items.estado === 'Disponible' ? 'green' : 'red' }">{{ items.estado }}</td>
-                <td>{{ items.fecha_inicio_operacion }}</td>
+                <td>{{ items.fechaInicioOperacion}}</td>
                 <td>
                     <img *ngIf="items.estado === 'Disponible'" (click)="cambiarEstado(items)" width="30" height="30" src="assets/img/error.svg">
                     <img *ngIf="items.estado === 'No disponible'" (click)="cambiarEstado(items)" width="30" height="30" src="assets/img/correct.svg">

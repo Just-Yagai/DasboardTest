@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center" *ngFor="let items of SecuenciasDatos; let i = index;">
+            <tr class="text-center" *ngFor="let items of SecuenciasDatos let i = index;">
                 <ng-container
                     *ngIf="i >= paginator.pageIndex * paginator.pageSize && i < (paginator.pageIndex + 1) * paginator.pageSize">
                     <td>{{ items.e_cf }}</td>
@@ -77,8 +77,8 @@
     <div class="position-relative my-3 shadow-sm border fw-normal">
         <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]>
         </mat-paginator>
-        <div class="position-absolute top-50 start-3 translate-middle-y ">Cantidad de Registros: 100
+        <div class="position-absolute top-50 start-3 translate-middle-y ms-2">Cantidad de Registros: 100
         </div>
     </div>
-
+    
 </div>
