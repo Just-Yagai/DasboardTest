@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { DatosSecuencias } from 'src/app/core/model/utils/DatosSecuencias';
+import { DatosSecuenciass } from 'src/app/core/model/utils/DatosSecuencias';
 
 @Component({
   selector: 'app-secuencias',
@@ -9,7 +9,7 @@ import { DatosSecuencias } from 'src/app/core/model/utils/DatosSecuencias';
 })
 export class SecuenciasComponent  {
 
-  @Input() SecuenciasDatos: DatosSecuencias;
+  @Input() SecuenciasDatos: DatosSecuenciass;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor() {}

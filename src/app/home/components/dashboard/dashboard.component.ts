@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
   ){}
 
   ngOnInit(){
-    // this.obtenerDataApi();
+    this.obtenerSecuencias(this.modeloFiltrado);
   }
 
   
@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
             this.modeloFiltrado.canalID = 1;
             this.modeloFiltrado.TipoECF = 0;
             this.modeloFiltrado.pageSize = 1;
-            this.modeloFiltrado.pageNumber = 5;
+            this.modeloFiltrado.pageNumber = 1;
             this.obtenerMarcas(this.modeloFiltrado);
             this.obtenerDelegaciones(this.modeloFiltrado);
             this.obtenerSecuencias(this.modeloFiltrado);
@@ -146,16 +146,14 @@ export class DashboardComponent implements OnInit {
           // console.log(data);
         })
   }
-
-  // Obtener Secuencias
   obtenerSecuencias(modeloFiltrado: ModeloFilter) {
-    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID, modeloFiltrado.TipoECF,modeloFiltrado.pageNumber,modeloFiltrado.pageSize)
-        .subscribe((data) => {
-          this.modeloDatos.DatosSecuencias = data;
-          // console.log(data);
-        })
+    console.log('Parámetros de búsqueda:', modeloFiltrado);
+    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID, modeloFiltrado.TipoECF, modeloFiltrado.pageNumber, modeloFiltrado.pageSize)
+      .subscribe((data) => {
+        console.log('Datos recibidos:', data);
+        this.modeloDatos.DatosSecuencias = data;
+      });
   }
-
   // Obtener RNC Estado
   obtenerRncEstado(modeloFiltrado: ModeloFilter) {
     this.RncEstadoServices.getRncEstado(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)
