@@ -1,8 +1,8 @@
 export class Paginacion {
 
-     public  NumeroPagina: number;
-     public  SizePagina: number; 
-     public  TotalElementos: number; 
-     public  TotalPaginas: number;
+     public  numeroPagina: number;
+     public  sizePagina: number; 
+     public  totalElementos: number; 
+     public  totalPaginas: number;
 
 }

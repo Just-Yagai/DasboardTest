@@ -52,11 +52,8 @@ export class DashboardComponent implements OnInit {
     private AlertServices: AlertsService
   ){}
 
-  ngOnInit(){
-    this.obtenerSecuencias(this.modeloFiltrado);
-  }
+  ngOnInit(){}
 
-  
   // Obtener RNC
   obtenerRNC(rnc: string) {
     if (!rnc) {
@@ -74,7 +71,7 @@ export class DashboardComponent implements OnInit {
             this.modeloFiltrado.canalID = 1;
             this.modeloFiltrado.TipoECF = 0;
             this.modeloFiltrado.pageSize = 1;
-            this.modeloFiltrado.pageNumber = 1;
+            this.modeloFiltrado.pageNumber = 5;
             this.obtenerMarcas(this.modeloFiltrado);
             this.obtenerDelegaciones(this.modeloFiltrado);
             this.obtenerSecuencias(this.modeloFiltrado);

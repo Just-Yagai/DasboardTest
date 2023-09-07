@@ -15,10 +15,8 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="SecuenciasDatos && SecuenciasDatos.result">
             <tr class="text-center" *ngFor="let items of SecuenciasDatos.result let i = index;">
-                <ng-container
-                    *ngIf="i >= paginator.pageIndex * paginator.pageSize && i < (paginator.pageIndex + 1) * paginator.pageSize">
                     <td>{{ items.e_cf }}</td>
                     <td>{{ items.secuenciaDesde }}</td>
                     <td>{{ items.secuenciaHasta }}</td>
@@ -31,8 +29,7 @@
                                     setFechaHastaModal(items.fechaHasta);" class="btn" data-bs-toggle="modal"
                             data-bs-target="#exampleModal3"><img src="assets/img/view-more.svg" width="30" height="30"
                                 alt="Ver Mas"></button>
-                    </td>
-                </ng-container>
+                    </td>          
             </tr>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -74,10 +71,10 @@
         </tbody>
     </table>
 
-    <div class="position-relative my-3 shadow-sm border fw-normal">
-        <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]>
+    <div class="position-relative my-3 shadow-sm border fw-normal" >
+        <mat-paginator [length]="SecuenciasDatos?.paginacion?.totalElementos" [pageSize]="SecuenciasDatos?.paginacion?.sizePagina" (page)="actualizarTamanoPagina($event)" aria-labelledby="Select page" >
         </mat-paginator>
-        <div class="position-absolute top-50 start-3 translate-middle-y ms-2">Cantidad de Registros: 100
+        <div class="position-absolute top-50 start-3 translate-middle-y ms-2">Cantidad de Registros: {{ SecuenciasDatos?.paginacion?.totalElementos }}
         </div>
     </div>
     
