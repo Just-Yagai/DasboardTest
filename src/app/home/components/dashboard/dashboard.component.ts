@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit {
             this.modeloFiltrado.canalID = 1;
             this.modeloFiltrado.TipoECF = 0;
             this.modeloFiltrado.pageSize = 1;
-            this.modeloFiltrado.pageNumber = 5;
+            this.modeloFiltrado.pageNumber = 2;
             this.obtenerMarcas(this.modeloFiltrado);
             this.obtenerDelegaciones(this.modeloFiltrado);
             this.obtenerSecuencias(this.modeloFiltrado);

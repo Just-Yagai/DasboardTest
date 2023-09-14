@@ -25,6 +25,6 @@ export class RncEstadoService {
   }
 
   updaterncEstado(rncEstado:any ):Observable<any>{
-    return this.http.put<any>(this.apiurl + `RncEstado/ActualizarDelegaciones/${rncEstado.rnc}`,rncEstado)
+    return this.http.put<any>(this.apiurl + `RncEstado/ActualizarRncEstado/${rncEstado.rnc}?ambiente=${rncEstado.ambienteID}`,rncEstado)
   }
 }

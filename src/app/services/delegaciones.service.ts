@@ -26,6 +26,6 @@ export class DelegacionesService {
   }
 
   updateDelegaciones(delegaciones:any ): Observable<any> {
-    return this.http.put(this.apiUrl + `Delegaciones/ActualizarDelegaciones/${delegaciones.rnc}`, delegaciones);
+    return this.http.put(`${this.apiUrl}DelegacionDb/ActualizarDelegacion/${delegaciones.rnc}?ambiente=${delegaciones.ambienteID}`, delegaciones);
   }
 }

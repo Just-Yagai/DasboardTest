@@ -24,6 +24,6 @@ export class SelectService {
   }
 
   getTipoECF(): Observable<TiposECF[]>{
-    return this.http.get<TiposECF[]>('assets/json/tipo_ECF.json');
+    return this.http.get<TiposECF[]>(this.apiUrl + 'Tipoecf/ObtenerTipoEcf');
   }
 }
