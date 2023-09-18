@@ -19,6 +19,7 @@ export class SelectComponent implements OnInit {
   @Input() SelectDisabled: boolean;
   @Input() FiltradoGeneral: ModeloFilter;
   @Output() DatosFiltrados = new EventEmitter<ModeloFilter>();
+  @Output() ambienteChanged = new EventEmitter<number>();
 
   // Datos Generales
   ambienteID: number;
@@ -41,6 +42,8 @@ export class SelectComponent implements OnInit {
     this.obtenerTipoECF();
   }
 
+
+  
   obtenerAmbiente() {
     this.SelectServices.getAmbiente()
       .subscribe((data) => {
@@ -70,6 +73,7 @@ export class SelectComponent implements OnInit {
     this.ambienteID = parseInt(value);
     this.FiltradoGeneral.ambienteID = this.ambienteID;
     this.DatosFiltrados.emit(this.FiltradoGeneral);
+    this.ambienteChanged.emit(this.ambienteID);
     console.log(this.DatosFiltrados)
   }
 
@@ -85,4 +89,11 @@ export class SelectComponent implements OnInit {
     this.FiltradoGeneral.TipoECF = this.TipoECF;
     this.DatosFiltrados.emit(this.FiltradoGeneral);
   }
+
+  onAmbienteChange1(value: string) {
+    this.ambienteID = parseInt(value);
+    this.FiltradoGeneral.ambienteID = this.ambienteID;
+    this.DatosFiltrados.emit(this.FiltradoGeneral);
+    this.ambienteChanged.emit(this.ambienteID); // Emitir el evento de cambio de ambiente
+}
 }

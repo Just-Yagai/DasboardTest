@@ -32,7 +32,8 @@ export class DashboardComponent implements OnInit {
   // Datos Generales Del Contribuyente
   rnc: string;
   razonSocial: string;
-  
+  ambienteID : number;
+  canalID: number;
   tipoCertificacion: TipoCertificacion[];
   isSelectDisabled: boolean = true;
 
@@ -72,6 +73,8 @@ export class DashboardComponent implements OnInit {
             this.modeloFiltrado.TipoECF = 0;
             this.modeloFiltrado.pageSize = 1;
             this.modeloFiltrado.pageNumber = 2;
+            this.ambienteID = 1;
+            this.canalID = 1;
             this.obtenerMarcas(this.modeloFiltrado);
             this.obtenerDelegaciones(this.modeloFiltrado);
             this.obtenerSecuencias(this.modeloFiltrado);
@@ -145,12 +148,21 @@ export class DashboardComponent implements OnInit {
   }
   obtenerSecuencias(modeloFiltrado: ModeloFilter) {
     console.log('Parámetros de búsqueda:', modeloFiltrado);
-    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID, modeloFiltrado.TipoECF, modeloFiltrado.pageNumber, modeloFiltrado.pageSize)
+    this.SecuenciasServices.getSecuencias(modeloFiltrado.rnc, this.ambienteID, this.canalID, modeloFiltrado.TipoECF, modeloFiltrado.pageNumber, modeloFiltrado.pageSize)
       .subscribe((data) => {
         console.log('Datos recibidos:', data);
         this.modeloDatos.DatosSecuencias = data;
       });
   }
+
+  onAmbienteChanged(ambienteID: number) {
+    this.ambienteID = ambienteID;
+    // También puedes actualizar canalID si es necesario
+    // this.canalID = nuevoCanalID;
+
+    // Luego, puedes volver a cargar los datos o realizar otras acciones necesarias
+    this.obtenerSecuencias(this.modeloFiltrado);
+}
   // Obtener RNC Estado
   obtenerRncEstado(modeloFiltrado: ModeloFilter) {
     this.RncEstadoServices.getRncEstado(modeloFiltrado.rnc, modeloFiltrado.ambienteID, modeloFiltrado.canalID)

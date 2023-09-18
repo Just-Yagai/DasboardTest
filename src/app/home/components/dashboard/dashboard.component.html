@@ -171,7 +171,7 @@
                 <app-select [SelectDisabled]="isSelectDisabled"
                             [FiltradoGeneral]="modeloFiltrado"
                             [e_CF]="true"
-                            (DatosFiltrados)="obtenerSecuencias($event)">
+                            (DatosFiltrados)="obtenerSecuencias($event)" (ambienteChanged)="onAmbienteChanged($event)">
                 </app-select> 
                 <app-secuencias [SecuenciasDatos]="modeloDatos.DatosSecuencias" ></app-secuencias>
             </div>

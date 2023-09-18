@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
-import { Secuencias } from '../core/model/utils/secuencias';
 import { environment } from 'src/environments/environment';
 import {  DatosSecuenciass } from '../core/model/utils/DatosSecuencias';
 
